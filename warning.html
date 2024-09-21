@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning...</title>
+</head>
+<body>
+    <h1>Warning</h1>
+    <h2>Esta página le informa el usuario y la Contraseña de usuario</h2>
+    <p id="userMessage">Cargando datos...</p>
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                username: params.get('username'),
+                password: params.get('password')
+            };
+        }
+
+        // Extraer y mostrar los datos en la página
+        const { username, password } = getQueryParams();
+
+        if (username && password) {
+            document.getElementById('userMessage').innerHTML = `
+                <strong>Usuario:</strong> ${username} <br>
+                <strong>Contraseña:</strong> ${password}
+            `;
+        } else {
+            document.getElementById('userMessage').textContent = 'No se han proporcionado datos.';
+        }
+    </script>
+
+</body>
+</html>

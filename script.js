@@ -1,17 +1,10 @@
-// script.js
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evitar el envío del formulario
-
+document.getElementById('loginForm').addEventListener('submit', function(event) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
 
-    if (username === "" || password === "") {
-        errorMessage.textContent = "Por favor, completa todos los campos.";
-        errorMessage.style.display = "block";
-    } else {
-        errorMessage.style.display = "none";
-        alert(`Usuario: ${username}\nContraseña: ${password}`);
-        // Aquí puedes añadir el envío de datos a un servidor o cualquier otra lógica.
-    }
+    event.preventDefault(); // Evitar que se recargue la página
+    // Redirigir a la página hola.html con los datos como parámetros en la URL
+    window.location.href = `warning.html?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
 });
+
+
